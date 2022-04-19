@@ -10,7 +10,9 @@
 }
 </style>
 </head>
-    
+    <?php
+    session_start();
+    ?>
 <body>
 <div class="divTable">
     <div class="divTableRow">
@@ -24,7 +26,16 @@
                 <ul class="divTableRow">
                     <li class="divTableCell"><a href="index.php" class="set_style_link">صفحه اصلی</a></li>
                     <li class="divTableCell"><a href="register.php" class="set_style_link">عضویت در سایت</a></li>
+                    <?php 
+                        if(isset($_SESSION['state_login'])&& $_SESSION['state_login']== true)
+                        { 
+                    ?>
+                    <li class="divTableCell"><a href="logout.php" class="set_style_link">خروج از سایت
+                        <?php echo("{{$_SESSION['realname']}}");?>
+                    </a></li>
+                    <?php } else{ ?>  
                     <li class="divTableCell"><a href="login.php" class="set_style_link">ورود به سایت</a></li>
+                    <?php }?>
                     <li class="divTableCell"><a href="https://instagram.com/swimming_to_light" class="set_style_link">درباره ما</a></li>
                     <li class="divTableCell"><a href="#" class="set_style_link">ارتباط با ما</a></li>
                 </ul>

@@ -1,6 +1,16 @@
 <?php
 include ("includes/header.php");
-?>    
+if(isset($_SESSION['state_login'])&& $_SESSION['state_login']== true){
+
+?>
+
+<script type="text/javascript"> 
+
+    location.replace("index.php");
+
+</script>
+<?php } ?>
+
 <br/>
 <form name="login" action="action_login.php" method="POST">
 <table style="width:50%;margin-left:auto;margin-right:auto" border="0">
