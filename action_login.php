@@ -24,6 +24,7 @@ try{
         echo("<p style='color:green;'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید</b></p>");
         $_SESSION["state_login"] = true;
         $_SESSION["realname"] = $row['realname'];
+        $_SESSION['username'] = $row['username'];
         if($row["type"]== 0) $_SESSION['user_type']="public";
         if($row["type"]== 1) {
         $_SESSION['user_type']="admin";
