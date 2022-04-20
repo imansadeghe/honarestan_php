@@ -38,6 +38,12 @@
                     <?php }?>
                     <li class="divTableCell"><a href="https://instagram.com/swimming_to_light" class="set_style_link">درباره ما</a></li>
                     <li class="divTableCell"><a href="#" class="set_style_link">ارتباط با ما</a></li>
+                <?php
+                    if(isset($_SESSION['state_login'])&& $_SESSION['state_login']== true && $_SESSION['user_type'] == "admin" )
+                    {
+                ?>
+                <li class="divTableCell"><a href="admin_products.php" class="set_style_link">مدیریت محصولات</a></li>
+                <?php } ?>
                 </ul>
             </nav>
             <section class="divTable">

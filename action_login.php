@@ -25,7 +25,14 @@ try{
         $_SESSION["state_login"] = true;
         $_SESSION["realname"] = $row['realname'];
         if($row["type"]== 0) $_SESSION['user_type']="public";
-        if($row["type"]== 1) $_SESSION['user_type']="admin";
+        if($row["type"]== 1) {
+        $_SESSION['user_type']="admin";
+        ?>
+        <script>
+            location.replace('admin_products.php');
+        </script>
+        <?php 
+    }
     }
     else
         echo("<p style='color:red;'><b>نام کاربری یا کلمه عبور یافت نشد </b></p>");
