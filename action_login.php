@@ -38,7 +38,7 @@ try{
     else
         echo("<p style='color:red;'><b>نام کاربری یا کلمه عبور یافت نشد </b></p>");
 
-    mysqli_close();
+    mysqli_close($link);
     }
     catch(EXCEPTION $e){
     echo "خطا رخ داده است .$e";

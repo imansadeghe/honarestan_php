@@ -149,7 +149,7 @@ var r = confirm("از صحت اطلاعات وارد شده اطمینان دا�
 if (r==true){
     var validation = true;
     var count = document.getElementById('pro_qty').value;
-    var mobile = document.getELementById('mobile').value;
+    var mobile = document.getElementById('mobile').value;
     var address = document.getElementById('address').value;
 
     if(count== 0 || count=='')
