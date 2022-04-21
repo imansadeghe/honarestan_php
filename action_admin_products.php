@@ -17,7 +17,7 @@ if(  $_SESSION['user_type'] != "admin"){
     isset($_POST['pro_name']) && !empty($_POST['pro_name']) &&
     isset($_POST['pro_qty']) && !empty($_POST['pro_qty']) &&
     isset($_POST['pro_price']) && !empty($_POST['pro_price']) &&
-    isset($_POST['pro_detail']) && !empty($_POST['pro_detail']) 
+    isset($_POST['pro_detail']) && !empty($_POST['pro_detail']) || $_GET['action'] == 'DELETE'
 ){
 $pro_code = $_POST['pro_code'];
 $pro_name = $_POST['pro_name'];
@@ -26,6 +26,33 @@ $pro_price = $_POST['pro_price'];
 $pro_image = $_FILES["pro_image"]["name"];
 $pro_detail = $_POST['pro_detail'];
 
+
+if(isset($_GET['action'])){
+    $id = $_GET['id'];
+    $link = mysqli_connect("localhost","root","","shop_db");
+    switch($_GET['action']){
+        
+        case 'EDIT':
+            
+            $query="update products set pro_code ='$pro_code',pro_name='$pro_name',
+            pro_qty='$pro_qty',pro_price='$pro_price',pro_detail='$pro_detail'
+            where pro_code='$id'";
+            if(mysqli_query($link,$query)===true) echo("<p style='color:green'><b>ویرایش محصولات با موفقیت انجام شد</b></p>");
+            else echo ("<p style='color:red'><b>خطا در ویرایش محصولات</b></p>");
+            break;
+        case 'DELETE':
+            $query = "delete from products where pro_code='$id'";
+             mysqli_query($link,$query);
+             echo 'حذف با موفقیت انجام شد .';
+            break;
+        }
+        mysqli_close($link);
+        include('includes/footer.php');
+        exit();
+
+
+
+}
 $target_dir = "images/products/";
 $target_file = $target_dir.$_FILES['pro_image']['name'];
 $uploadOk = 1;
